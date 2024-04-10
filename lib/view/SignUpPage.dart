@@ -47,7 +47,6 @@ class _SignUpFormState extends State<SignUpForm> {
     if (nome.isEmpty || email.isEmpty || senha.isEmpty) {
       _showSnackBar('Por favor, preencha todos os campos');
     } else {
-      // Implementar lógica de cadastro do usuário
       _showSnackBar('Cadastro realizado com sucesso!');
       Navigator.pop(context);
     }
@@ -114,14 +113,14 @@ class _SignUpFormState extends State<SignUpForm> {
             style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(10.0), // torna o botão quadrado
+                      BorderRadius.circular(10.0),
                 ),
                 padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 50), // aumenta o tamanho do botão
+                    vertical: 20, horizontal: 50),
                 textStyle:
-                    const TextStyle(fontSize: 20), // aumenta o tamanho da fonte
+                    const TextStyle(fontSize: 20),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.blue, // Cor do texto
+                backgroundColor: Colors.blue,
               ),
             child: const Text('Cadastrar'),
           ),

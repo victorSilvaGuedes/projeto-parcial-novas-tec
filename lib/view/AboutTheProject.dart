@@ -11,7 +11,7 @@ class AboutTheProject extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: 20), // Adicionando padding nos lados
+            horizontal: 20),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

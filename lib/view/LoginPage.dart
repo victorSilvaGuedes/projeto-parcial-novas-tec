@@ -8,10 +8,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String nome = ''; // Variável para armazenar o nome digitado
-    String senha = ''; // Variável para armazenar a senha digitada
+    String nome = '';
+    String senha = '';
 
-    // Definindo uma paleta de cores personalizada
     const Color primaryColor = Colors.blue;
 
     return Scaffold(
@@ -81,14 +80,14 @@ class LoginPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(10.0), // torna o botão quadrado
+                      BorderRadius.circular(10.0), 
                 ),
                 padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 50), // aumenta o tamanho do botão
+                    vertical: 20, horizontal: 50),
                 textStyle:
-                    const TextStyle(fontSize: 20), // aumenta o tamanho da fonte
+                    const TextStyle(fontSize: 20),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.blue, // Cor do texto
+                backgroundColor: Colors.blue, 
               ),
               child: const Text('Entrar'),
             ),
@@ -103,14 +102,14 @@ class LoginPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(10.0), // torna o botão quadrado
+                      BorderRadius.circular(10.0),
                 ),
                 padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 50), // aumenta o tamanho do botão
+                    vertical: 20, horizontal: 50),
                 textStyle:
-                    const TextStyle(fontSize: 20), // aumenta o tamanho da fonte
+                    const TextStyle(fontSize: 20),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.blue, // Cor do texto
+                backgroundColor: Colors.blue, 
               ),
               child: const Text('Criar uma conta'),
             ),

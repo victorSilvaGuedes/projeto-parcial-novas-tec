@@ -21,16 +21,16 @@ class ShoppingListApp extends StatelessWidget {
             },
           ),
         ),
-        body: ShoppingListScreen(shoppingLists: GlobalData.shoppingLists), // Passando a lista para ShoppingListScreen
+        body: ShoppingListScreen(shoppingLists: GlobalData.shoppingLists),
       ),
     );
   }
 }
 
 class ShoppingListScreen extends StatefulWidget {
-  final List<ShoppingList> shoppingLists; // Recebendo a lista como parâmetro
+  final List<ShoppingList> shoppingLists; 
 
-  ShoppingListScreen({required this.shoppingLists}); // Construtor
+  ShoppingListScreen({required this.shoppingLists});
 
   @override
   _ShoppingListScreenState createState() => _ShoppingListScreenState();
@@ -45,13 +45,13 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
       children: <Widget>[
         Expanded(
           child: ListView.builder(
-            itemCount: widget.shoppingLists.length, // Usando a lista recebida como parâmetro
+            itemCount: widget.shoppingLists.length,
             itemBuilder: (context, index) {
               return Column(
                 children: [
                   ListTile(
                     title: Text(
-                      widget.shoppingLists[index].name, // Usando a lista recebida como parâmetro
+                      widget.shoppingLists[index].name,
                       style: TextStyle(
                         fontSize: 20,
                       ),
@@ -61,7 +61,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ShoppingListDetailScreen(
-                            shoppingList: widget.shoppingLists[index], // Usando a lista recebida como parâmetro
+                            shoppingList: widget.shoppingLists[index],
                             onUpdate: () {
                               setState(() {});
                             },
