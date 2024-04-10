@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.blue,
               ),
-              child: const Text('Criar lista de compras'),
+              child: const Text('Gerenciar listas de compras'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
