@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                       BorderRadius.circular(10.0),
                 ),
                 padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 50), 
+                    vertical: 20, horizontal: 25), 
                 textStyle:
                     const TextStyle(fontSize: 20), 
                 foregroundColor: Colors.white,
