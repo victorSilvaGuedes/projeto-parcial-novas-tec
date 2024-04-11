@@ -11,15 +11,13 @@ class LoginPage extends StatelessWidget {
     String nome = '';
     String senha = '';
 
-    const Color primaryColor = Colors.blue;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           'App Lista de Compras',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: primaryColor,
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -32,15 +30,15 @@ class LoginPage extends StatelessWidget {
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Nome',
-                labelStyle: const TextStyle(color: primaryColor),
+                labelStyle: const TextStyle(color: Colors.blue),
                 focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: primaryColor),
+                  borderSide: BorderSide(color: Colors.blue),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: primaryColor.withOpacity(0.5)),
+                  borderSide: BorderSide(color: Colors.blue.withOpacity(0.5)),
                 ),
               ),
-              style: const TextStyle(fontSize: 18, color: primaryColor),
+              style: const TextStyle(fontSize: 20),
               onChanged: (value) {
                 nome = value;
               },
@@ -49,15 +47,15 @@ class LoginPage extends StatelessWidget {
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Senha',
-                labelStyle: const TextStyle(color: primaryColor),
+                labelStyle: const TextStyle(color: Colors.blue),
                 focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: primaryColor),
+                  borderSide: BorderSide(color: Colors.blue),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: primaryColor.withOpacity(0.5)),
+                  borderSide: BorderSide(color: Colors.blue.withOpacity(0.5)),
                 ),
               ),
-              style: const TextStyle(fontSize: 18, color: primaryColor),
+              style: const TextStyle(fontSize: 20),
               obscureText: true,
               onChanged: (value) {
                 senha = value;
@@ -80,14 +78,14 @@ class LoginPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(10.0), 
+                      BorderRadius.circular(10.0),
                 ),
                 padding: const EdgeInsets.symmetric(
                     vertical: 20, horizontal: 50),
                 textStyle:
                     const TextStyle(fontSize: 20),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.blue, 
+                backgroundColor: Colors.blue,
               ),
               child: const Text('Entrar'),
             ),
@@ -109,7 +107,7 @@ class LoginPage extends StatelessWidget {
                 textStyle:
                     const TextStyle(fontSize: 20),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.blue, 
+                backgroundColor: Colors.blue,
               ),
               child: const Text('Criar uma conta'),
             ),
