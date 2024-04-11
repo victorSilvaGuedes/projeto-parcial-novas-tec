@@ -74,7 +74,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 borderSide: BorderSide(color: Colors.blue.withOpacity(0.5)),
               ),
             ),
-            style: const TextStyle(fontSize: 18, color: Colors.blue),
+            style: const TextStyle(fontSize: 20),
           ),
           const SizedBox(height: 10),
           TextFormField(
@@ -89,7 +89,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 borderSide: BorderSide(color: Colors.blue.withOpacity(0.5)),
               ),
             ),
-            style: const TextStyle(fontSize: 18, color: Colors.blue),
+            style: const TextStyle(fontSize: 20),
           ),
           const SizedBox(height: 10),
           TextFormField(
@@ -105,7 +105,7 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
             obscureText: true,
-            style: const TextStyle(fontSize: 18, color: Colors.blue),
+            style: const TextStyle(fontSize: 20),
           ),
           const SizedBox(height: 30),
           ElevatedButton(
