@@ -7,7 +7,7 @@ class AboutTheProject extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detalhes do Projeto'),
+        title: const Text('Detalhes do projeto'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
