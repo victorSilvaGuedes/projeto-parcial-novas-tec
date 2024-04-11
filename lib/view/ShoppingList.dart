@@ -11,7 +11,7 @@ class ShoppingListApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Listas de compras'),
+          title: Text('Gerenciar listas de compras'),
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
           leading: IconButton(
@@ -28,7 +28,7 @@ class ShoppingListApp extends StatelessWidget {
 }
 
 class ShoppingListScreen extends StatefulWidget {
-  final List<ShoppingList> shoppingLists; 
+  final List<ShoppingList> shoppingLists;
 
   ShoppingListScreen({required this.shoppingLists});
 
@@ -69,11 +69,22 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                         ),
                       );
                     },
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () {
-                        _removeShoppingList(index);
-                      },
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            _editShoppingListName(widget.shoppingLists[index], index);
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            _removeShoppingList(index);
+                          },
+                        ),
+                      ],
                     ),
                   ),
                   const Divider(),
@@ -90,7 +101,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
               TextFormField(
                 controller: _textEditingController,
                 decoration: InputDecoration(
-                  labelText: 'Nome da Lista de Compras',
+                  labelText: 'Nome da lista de compras',
                   labelStyle: TextStyle(color: Colors.blue),
                   focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.blue),
@@ -99,7 +110,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                     borderSide: BorderSide(color: Colors.blue.withOpacity(0.5)),
                   ),
                 ),
-                style: const TextStyle(fontSize: 18, color: Colors.blue),
+                style: const TextStyle(fontSize: 20),
               ),
               const SizedBox(height: 15),
               ElevatedButton(
@@ -117,7 +128,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.blue,
                 ),
-                child: const Text('Criar Nova Lista de Compra'),
+                child: const Text('Criar nova lista de compra'),
               ),
             ],
           ),
@@ -138,6 +149,63 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
     setState(() {
       widget.shoppingLists.removeAt(index);
     });
+  }
+
+  void _editShoppingListName(ShoppingList shoppingList, int index) {
+    TextEditingController _listNameController = TextEditingController(text: shoppingList.name);
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Editar nome da lista'),
+          content: TextField(
+  controller: _listNameController,
+  decoration: InputDecoration(
+    labelText: 'Novo nome da lista',
+    labelStyle: TextStyle(fontSize: 20),
+  ),
+  style: TextStyle(fontSize: 20),
+),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  shoppingList.name = _listNameController.text;
+                });
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 42),
+                backgroundColor: Colors.blue,
+                textStyle: const TextStyle(fontSize: 20),
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Salvar'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                backgroundColor: Colors.red,
+                textStyle: const TextStyle(fontSize: 20),
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Cancelar'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 
@@ -202,12 +270,16 @@ class _ShoppingListDetailScreenState extends State<ShoppingListDetailScreen> {
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                labelText: 'Pesquisar por item...',
+                    labelText: 'Pesquisar por nome do item',
                 prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
+                    labelStyle: TextStyle(color: Colors.blue),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue.withOpacity(0.5)),
+                    ),
+                  ),
             ),
           ),
           Expanded(
@@ -218,28 +290,34 @@ class _ShoppingListDetailScreenState extends State<ShoppingListDetailScreen> {
                 return Column(
                   children: [
                     ListTile(
-                      title: Text(
-                        item.name,
-                        style: TextStyle(
-                          fontSize: 20,
-                          decoration: item.bought ? TextDecoration.lineThrough : TextDecoration.none,
-                        ),
+                      title: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              item.name,
+                              style: TextStyle(
+                                fontSize: 20,
+                                decoration: item.bought ? TextDecoration.lineThrough : TextDecoration.none,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       subtitle: Text(
                         'Quantidade: ${item.quantity}',
-                        style: const TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 20),
                       ),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           item.bought
-                              ? SizedBox()
-                              : IconButton(
-                                  icon: Icon(Icons.edit),
-                                  onPressed: () {
-                                    _editItem(item.name, item.quantity, index);
-                                  },
-                                ),
+                            ? SizedBox()
+                            : IconButton(
+                                icon: Icon(Icons.edit),
+                                onPressed: () {
+                                  _editItem(item.name, item.quantity, index);
+                                },
+                              ),
                           IconButton(
                             icon: Icon(Icons.delete),
                             onPressed: () {
@@ -269,7 +347,7 @@ class _ShoppingListDetailScreenState extends State<ShoppingListDetailScreen> {
                 TextFormField(
                   controller: _itemTextController,
                   decoration: InputDecoration(
-                    labelText: 'Nome do Item',
+                    labelText: 'Nome do item',
                     labelStyle: TextStyle(color: Colors.blue),
                     focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue),
@@ -278,7 +356,7 @@ class _ShoppingListDetailScreenState extends State<ShoppingListDetailScreen> {
                       borderSide: BorderSide(color: Colors.blue.withOpacity(0.5)),
                     ),
                   ),
-                  style: const TextStyle(fontSize: 18, color: Colors.blue),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -293,7 +371,7 @@ class _ShoppingListDetailScreenState extends State<ShoppingListDetailScreen> {
                       borderSide: BorderSide(color: Colors.blue.withOpacity(0.5)),
                     ),
                   ),
-                  style: const TextStyle(fontSize: 18, color: Colors.blue),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 const SizedBox(height: 15),
                 ElevatedButton(
@@ -341,7 +419,7 @@ class _ShoppingListDetailScreenState extends State<ShoppingListDetailScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Editar Item'),
+          title: const Text('Editar item'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -352,8 +430,9 @@ class _ShoppingListDetailScreenState extends State<ShoppingListDetailScreen> {
                 },
                 decoration: const InputDecoration(
                   labelText: 'Nome do Item',
+                  labelStyle: TextStyle(fontSize: 20),
                 ),
-                style: const TextStyle(fontSize: 18, color: Colors.blue),
+                style: const TextStyle(fontSize: 20),
               ),
               const SizedBox(height: 10),
               TextFormField(
@@ -363,8 +442,9 @@ class _ShoppingListDetailScreenState extends State<ShoppingListDetailScreen> {
                 },
                 decoration: const InputDecoration(
                   labelText: 'Quantidade do Item',
+                  labelStyle: TextStyle(fontSize: 20),
                 ),
-                style: const TextStyle(fontSize: 18, color: Colors.blue),
+                style: const TextStyle(fontSize: 20),
               ),
             ],
           ),
