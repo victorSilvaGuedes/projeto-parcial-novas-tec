@@ -35,9 +35,9 @@ class HomeScreen extends StatelessWidget {
                       BorderRadius.circular(10.0),
                 ),
                 padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 25), 
+                    vertical: 20, horizontal: 25),
                 textStyle:
-                    const TextStyle(fontSize: 20), 
+                    const TextStyle(fontSize: 20),
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.blue,
               ),
@@ -59,11 +59,11 @@ class HomeScreen extends StatelessWidget {
                       BorderRadius.circular(10.0),
                 ),
                 padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 64), 
+                    vertical: 20, horizontal: 64),
                 textStyle:
-                    const TextStyle(fontSize: 20), 
+                    const TextStyle(fontSize: 20),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.blue, 
+                backgroundColor: Colors.blue,
               ),
               child: const Text('Ver sobre o projeto'),
             ),
